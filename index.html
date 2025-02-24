@@ -1,0 +1,59 @@
+<!DOCTYPE html><html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redes Sociales</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 100px;
+            margin-top: 300px;
+        }
+        .button {
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .button:hover {
+            transform: scale(1.5);
+        }
+        .youtube { background-color: rgba(255, 0, 0, 0.637); }
+        .facebook { background-color: blue; }
+        .instagram { background-color: purple; }
+        .tiktok { background-color: gainsboro; }
+        img {
+            width: 80px;
+            height: 80px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container" class="container"></div>
+    <script>
+        function createButton(className, url, imgSrc, altText) {
+            let button = document.createElement("div");
+            button.className = "button " + className;
+            button.onclick = function() { window.location.href = url; };
+            
+            let img = document.createElement("img");
+            img.src = imgSrc;
+            img.alt = altText;
+            
+            button.appendChild(img);
+            return button;
+        }
+        
+        let container = document.getElementById("container");
+        container.appendChild(createButton("youtube", "https://www.youtube.com/", "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/YouTube_full-color_icon_%282024%29.svg/220px-YouTube_full-color_icon_%282024%29.svg.png", "YouTube"));
+        container.appendChild(createButton("facebook", "https://www.facebook.com/", "https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg", "Facebook"));
+        container.appendChild(createButton("instagram", "https://www.instagram.com/", "https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg", "Instagram"));
+        container.appendChild(createButton("tiktok", "https://www.tiktok.com/", "https://upload.wikimedia.org/wikipedia/en/a/a9/TikTok_logo.svg", "TikTok"));
+    </script>
+</body>
+</html>
