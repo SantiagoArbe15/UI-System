@@ -1,9 +1,23 @@
-<!DOCTYPE html><html lang="es">
+<!DOCTYPE html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redes Sociales</title>
     <style>
+        body {
+            background-color: black; /* Fondo negro */
+            color: white; /* Color de texto blanco */
+            font-family: Arial, sans-serif; /* Fuente para el texto */
+        }
+        .header {
+            background-color: white; /* Fondo blanco para el cajón */
+            color: black; /* Texto negro */
+            text-align: center; /* Centrar texto */
+            padding: 20px; /* Espaciado interno */
+            font-size: 24px; /* Tamaño de fuente */
+            margin-bottom: 50px; /* Espacio debajo del cajón */
+        }
         .container {
             display: flex;
             justify-content: center;
@@ -15,6 +29,7 @@
             height: 200px;
             border-radius: 10px;
             display: flex;
+            flex-direction: column; /* Cambiar a columna para incluir el botón "Ir" */
             justify-content: center;
             align-items: center;
             cursor: pointer;
@@ -22,6 +37,19 @@
         }
         .button:hover {
             transform: scale(1.5);
+        }
+        .social-button {
+            margin-top: 10px; /* Espacio entre el icono y el botón "Ir" */
+            padding: 10px; /* Espaciado interno */
+            background-color: rgba(255, 255, 255, 0.2); /* Fondo semi-transparente */
+            border: none; /* Sin borde */
+            color: white; /* Texto blanco */
+            border-radius: 5px; /* Bordes redondeados */
+            cursor: pointer; /* Cambiar cursor a puntero */
+            transition: transform 0.2s; /* Animación */
+        }
+        .social-button:hover {
+            transform: scale(1.2); /* Animación al pasar el ratón */
         }
         .youtube { background-color: rgba(255, 0, 0, 0.637); }
         .facebook { background-color: blue; }
@@ -34,18 +62,28 @@
     </style>
 </head>
 <body>
+    <div class="header">UI System</div> <!-- Cajón con el título -->
     <div id="container" class="container"></div>
     <script>
         function createButton(className, url, imgSrc, altText) {
             let button = document.createElement("div");
             button.className = "button " + className;
-            button.onclick = function() { window.location.href = url; };
             
             let img = document.createElement("img");
             img.src = imgSrc;
             img.alt = altText;
             
             button.appendChild(img);
+            
+            // Crear el botón "Ir"
+            let redirectButton = document.createElement("button");
+            redirectButton.className = "social-button";
+            redirectButton.innerText = "Ir";
+            redirectButton.onclick = function() {
+                window.location.href = url; // Redirigir a la URL correspondiente
+            };
+            
+            button.appendChild(redirectButton); // Añadir el botón "Ir" al botón social
             return button;
         }
         
